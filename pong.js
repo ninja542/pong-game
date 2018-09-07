@@ -21,6 +21,8 @@ var player = new Player(580);
 var player2 = new Player(10);
 var ball = new Ball(200, 300);
 var keysDown = [];
+var player1score = 0;
+var player2score = 0;
 
 // render function
 var render = function(){
@@ -161,6 +163,15 @@ Ball.prototype.update = function(paddle1, paddle2){
 		this.x_speed = -this.x_speed;
 	}
 	if (this.y < 0 || this.y > 600){
+		if(this.y < 0){
+			player2score++;
+			// innerhtml stuff
+			console.log([player2score, player1score]);
+		}
+		else if(this.y > 600){
+			player1score++;
+			console.log([player2score, player1score]);
+		}
 		this.x_speed = 0;
 		this.y_speed = 3;
 		this.x = 200;
